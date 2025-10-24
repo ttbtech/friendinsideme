@@ -13,5 +13,51 @@
 
     <footer><i>Thank you for visiting FriendInsideMe.com</i></footer>
     <p>Have any better ideas for what should be on this site? Send me an e-mail at <a href="mailto:friend@friendinsideme.com">friend@friendinsideme.com</a>.</p>
+
+    <hr id="cookieBanner" style="display:none;">
+    <div id="cookieContent" style="display:none;">
+        <p><b>This website uses Google Analytics. Why? I'm curious as to who visits this god-awful website. You don't have to accept though.</b></p>
+        <p>Do you consent to cookies?</p>
+        <button onclick="friendinsideme()">Yes</button>
+        <button onclick="friendoutsideme()">No</button>
+    </div>
+    <hr id="cookieBannerBottom" style="display:none;">
+
+    <script>
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieBanner').style.display = 'block';
+            document.getElementById('cookieContent').style.display = 'block';
+            document.getElementById('cookieBannerBottom').style.display = 'block';
+        } else if (localStorage.getItem('cookieConsent') === 'accepted') {
+            LoadGA();
+        }
+
+        function friendinsideme() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieBanner').style.display = 'none';
+            document.getElementById('cookieContent').style.display = 'none';
+            document.getElementById('cookieBannerBottom').style.display = 'none';
+            LoadGA();
+        }
+
+        function friendoutsideme() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieBanner').style.display = 'none';
+            document.getElementById('cookieContent').style.display = 'none';
+            document.getElementById('cookieBannerBottom').style.display = 'none';
+        }
+
+        function LoadGA() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-63E3B2F9RV';
+            document.head.appendChild(script);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-63E3B2F9RV');
+        }
+    </script>
 </body>
 </html>
