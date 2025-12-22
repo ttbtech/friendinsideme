@@ -1,64 +1,116 @@
 <!-- Hee hee hee. What, trying to see how the greatest website on the Internet works? You dirty hacker.. -->
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
     <title>Friend Inside Me</title>
-</head>
-<body>
-    <img src="/welcome.jpg" alt="Welcome to Friend Inside Me.com" width="100%">
-    <h1>As the years go by, I will never die</h1>
-    <img src="/friend.jpg" alt="Friend Inside Me">
     
-    <hr style="border: none; height: 2px; background-color: black;">
-
-    <footer><i>Thank you for visiting FriendInsideMe.com</i></footer>
-    <p>Have any better ideas for what should be on this site? Send me an e-mail at <a href="mailto:friend@friendinsideme.com">friend@friendinsideme.com</a>.</p>
-
-    <hr id="cookieBanner" style="display:none;">
-    <div id="cookieContent" style="display:none;">
-        <p><b>This website uses Google Analytics. Why? I'm curious as to who visits this god-awful website. You don't have to accept though.</b></p>
-        <p>Do you consent to cookies?</p>
-        <button onclick="friendinsideme()">Yes</button>
-        <button onclick="friendoutsideme()">No</button>
-    </div>
-    <hr id="cookieBannerBottom" style="display:none;">
-
-    <script>
-        if (!localStorage.getItem('cookieConsent')) {
-            document.getElementById('cookieBanner').style.display = 'block';
-            document.getElementById('cookieContent').style.display = 'block';
-            document.getElementById('cookieBannerBottom').style.display = 'block';
-        } else if (localStorage.getItem('cookieConsent') === 'accepted') {
-            LoadGA();
+    <style>
+        body {
+            overflow-x: hidden; 
         }
 
-        function friendinsideme() {
-            localStorage.setItem('cookieConsent', 'accepted');
-            document.getElementById('cookieBanner').style.display = 'none';
-            document.getElementById('cookieContent').style.display = 'none';
-            document.getElementById('cookieBannerBottom').style.display = 'none';
-            LoadGA();
+        .itsnew {
+            position: fixed;
+            top: -20px;
+            z-index: 9999;
+            color: #A5F2F3; 
+            font-size: 1em;
+            user-select: none;
+            pointer-events: none; 
+            animation-name: fall;
+            animation-timing-function: linear;
         }
 
-        function friendoutsideme() {
-            localStorage.setItem('cookieConsent', 'declined');
-            document.getElementById('cookieBanner').style.display = 'none';
-            document.getElementById('cookieContent').style.display = 'none';
-            document.getElementById('cookieBannerBottom').style.display = 'none';
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
+    </style>
+</head> 
+<body> 
+    <img src="/welcome.jpg" alt="Welcome to Friend Inside Me.com" width="100%"> 
+    <h1>As the years go by, I will never die</h1> 
+    <img src="/friend.jpg" alt="Friend Inside Me"> 
+    
+    <hr style="border: none; height: 12px; border-radius: 6px; background: repeating-linear-gradient(135deg, #ff0000, #ff0000 10px, #ffffff 10px, #ffffff 20px);"> 
+
+    <footer><i>Thank you for visiting FriendInsideMe.com</i></footer> 
+
+    <p>Have any better ideas for what should be on this site? 
+Send me an e-mail at <a 
+href="mailto:friend@friendinsideme.com">friend@friendinsideme.com</a>.</p>
+ 
+
+    <hr id="cookieBanner" style="display:none;"> 
+    <div id="cookieContent" style="display:none;"> 
+
+        <p><b>This website uses Google Analytics. Why? I'm 
+curious as to who visits this god-awful website. You don't have to 
+accept though.</b></p> 
+        <p>Do you consent to cookies?</p> 
+        <button onclick="friendinsideme()">Yes</button> 
+        <button onclick="friendoutsideme()">No</button> 
+    </div> 
+    <hr id="cookieBannerBottom" style="display:none;"> 
+
+    <script> 
+        function somekingofsnowgrave() {
+            const weirdroute = document.createElement('div');
+            weirdroute.innerHTML = '&#10052;';
+            weirdroute.classList.add('itsnew');
+            
+            weirdroute.style.left = Math.random() * 100 + 'vw';
+            
+            weirdroute.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            
+            const duration = Math.random() * 5 + 3;
+            weirdroute.style.animationDuration = duration + 's';
+            
+            document.body.appendChild(weirdroute);
+
+            setTimeout(() => {
+                weirdroute.remove();
+            }, duration * 1000);
         }
 
-        function LoadGA() {
-            var script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-63E3B2F9RV';
-            document.head.appendChild(script);
+        setInterval(somekingofsnowgrave, 300);
 
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-63E3B2F9RV');
-        }
-    </script>
-</body>
+        if (!localStorage.getItem('cookieConsent')) { 
+            document.getElementById('cookieBanner').style.display = 'block'; 
+            document.getElementById('cookieContent').style.display = 'block'; 
+            document.getElementById('cookieBannerBottom').style.display = 'block'; 
+        } else if (localStorage.getItem('cookieConsent') === 'accepted') { 
+            LoadGA(); 
+        } 
+
+        function friendinsideme() { 
+            localStorage.setItem('cookieConsent', 'accepted'); 
+            document.getElementById('cookieBanner').style.display = 'none'; 
+            document.getElementById('cookieContent').style.display = 'none'; 
+            document.getElementById('cookieBannerBottom').style.display = 'none'; 
+            LoadGA(); 
+        } 
+
+        function friendoutsideme() { 
+            localStorage.setItem('cookieConsent', 'declined'); 
+            document.getElementById('cookieBanner').style.display = 'none'; 
+            document.getElementById('cookieContent').style.display = 'none'; 
+            document.getElementById('cookieBannerBottom').style.display = 'none'; 
+        } 
+
+        function LoadGA() { 
+            var script = document.createElement('script'); 
+            script.async = true; 
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-63E3B2F9RV'; 
+            document.head.appendChild(script); 
+
+            window.dataLayer = window.dataLayer || []; 
+            function gtag(){dataLayer.push(arguments);} 
+            gtag('js', new Date()); 
+            gtag('config', 'G-63E3B2F9RV'); 
+        } 
+    </script> 
+</body> 
 </html>
